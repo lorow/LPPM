@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>SaveButtonMy.qml</file>
+        <file>LoadButtonMy.qml</file>
+        <file>VariablesMy.qml</file>
+        <file>LogoMy.qml</file>
+        <file>TopMy.qml</file>
+        <file>RightSideMy.qml</file>
+        <file>ColorBlock.qml</file>
+    </qresource>
+</RCC>
