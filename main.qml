@@ -61,10 +61,10 @@ ApplicationWindow {
 
         Grid {
             id: grid1
-            y: 688
+            y: 668
             height: 169
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 43
+            anchors.bottomMargin: 63
             anchors.right: parent.right
             anchors.rightMargin: 29
             anchors.left: parent.left
@@ -75,21 +75,25 @@ ApplicationWindow {
 
             SquareButtonMy {
                 id: squareButtonMy1
+                radius: 5
                 texxt: "Save"
             }
 
             SquareButtonMy {
                 id: squareButtonMy2
+                radius: 5
                 texxt: "Load"
             }
 
             SquareButtonMy {
                 id: squareButtonMy3
+                radius: 5
                 texxt: "Export"
             }
 
             SquareButtonMy {
                 id: squareButtonMy4
+                radius: 5
                 texxt: "Settings"
             }
         }
@@ -97,13 +101,14 @@ ApplicationWindow {
 
     Rectangle {
         id: workspace
-        color: "#383939"
+        color: "#383838"
+        border.width: 0
         anchors.left: parent.left
-        anchors.leftMargin: 260
+        anchors.leftMargin: 240
         anchors.top: parent.top
         anchors.topMargin: 0
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 100
+        anchors.bottom: workspace2.top
+        anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
 
@@ -149,10 +154,11 @@ ApplicationWindow {
     Rectangle {
         id: workspace2
         y: 770
-        height: 100
-        color: "#383939"
+        height: 75
+        color: "#424242"
+        border.width: 0
         anchors.left: parent.left
-        anchors.leftMargin: 260
+        anchors.leftMargin: 240
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.bottom: parent.bottom
@@ -160,43 +166,33 @@ ApplicationWindow {
 
         Rectangle {
             id: addButton
-            x: 588
-            y: -56
-            width: 80
-            height: 80
+            x: 1137
+            y: 10
+            width: 55
+            height: 55
             color: "#717373"
-            radius: 4
+            radius: 0
             border.color: "#252323"
             border.width: 5
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             anchors.right: parent.right
-            anchors.rightMargin: 10
-
-            Rectangle {
-                id: rectangle8
-                width: 5
-                height: 60
-                color: "#262727"
-                border.color: "#000000"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Rectangle {
-                id: rectangle9
-                x: 4
-                y: -7
-                width: 60
-                height: 7
-                color: "#262727"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            anchors.rightMargin: 8
 
             MouseArea {
                 id: mouseArea1
                 anchors.fill: parent
+            }
+
+            Text {
+                id: text1
+                color: "#ffffff"
+                text: qsTr("ADD")
+                font.family: "Tahoma"
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                anchors.fill: parent
+                font.pixelSize: 12
             }
         }
     }
