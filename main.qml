@@ -23,8 +23,7 @@ ApplicationWindow {
 
         ColorClickableButton {
             id: colorClickableButton1
-            x: -566
-            y: 198
+            coloText: "#ffffff"
             anchors.topMargin: 48
             anchors.rightMargin: 20
             anchors.leftMargin: 20
@@ -32,8 +31,7 @@ ApplicationWindow {
 
         ColorClickableButton {
             id: colorClickableButton2
-            x: -557
-            y: 203
+            coloText: "ffffff"
             anchors.top: colorClickableButton1.bottom
             anchors.topMargin: 50
             anchors.rightMargin: 20
@@ -41,8 +39,8 @@ ApplicationWindow {
         }
 
         ColorClickableButton {
+            coloText: "(255,255,255)"
             id: colorClickableButton3
-            x: -562
             anchors.top: colorClickableButton2.bottom
             anchors.topMargin: 50
             anchors.rightMargin: 20
@@ -75,117 +73,26 @@ ApplicationWindow {
             rows: 2
             columns: 2
 
-
-            Rectangle {
-                id: rectangle5
-                width: 86
-                height: 80
-                color: "#b04b4b"
-                radius: 15
-                border.width: 0
-
-                Text {
-                    id: text8
-                    x: 6
-                    y: -9
-                    width: 90
-                    color: "#ffffff"
-                    text: qsTr("Load")
-                    font.strikeout: false
-                    verticalAlignment: Text.AlignVCenter
-                    font.family: "Tahoma"
-                    anchors.fill: parent
-                    textFormat: Text.PlainText
-                    horizontalAlignment: Text.AlignHCenter
-                    style: Text.Sunken
-                    font.underline: false
-                    styleColor: "#ffffff"
-                    font.pixelSize: 22
-                    font.italic: false
-                    font.bold: false
-                }
-
-                MouseArea {
-                    id: mouseArea6
-                    anchors.fill: parent
-                }
+            SquareButtonMy {
+                id: squareButtonMy1
+                texxt: "Save"
             }
 
-            Rectangle {
-                id: rectangle6
-                width: 86
-                height: 80
-                color: "#b04b4b"
-                radius: 15
-                border.width: 0
-
-                Text {
-                    id: text9
-                    x: 6
-                    y: -9
-                    width: 90
-                    color: "#ffffff"
-                    text: qsTr("Export")
-                    font.strikeout: false
-                    verticalAlignment: Text.AlignVCenter
-                    font.family: "Tahoma"
-                    anchors.fill: parent
-                    textFormat: Text.PlainText
-                    horizontalAlignment: Text.AlignHCenter
-                    style: Text.Sunken
-                    font.underline: false
-                    styleColor: "#ffffff"
-                    font.pixelSize: 22
-                    font.italic: false
-                    font.bold: false
-                }
-
-                MouseArea {
-                    id: mouseArea8
-                    anchors.fill: parent
-                }
+            SquareButtonMy {
+                id: squareButtonMy2
+                texxt: "Load"
             }
 
-            Rectangle {
-                id: rectangle7
-                width: 86
-                height: 80
-                color: "#b04b4b"
-                radius: 20
-                border.width: 0
+            SquareButtonMy {
+                id: squareButtonMy3
+                texxt: "Export"
+            }
 
-                Text {
-                    id: text10
-                    x: 6
-                    y: -9
-                    width: 90
-                    color: "#ffffff"
-                    text: qsTr("Settings")
-                    font.strikeout: false
-                    verticalAlignment: Text.AlignVCenter
-                    font.family: "Tahoma"
-                    anchors.fill: parent
-                    textFormat: Text.PlainText
-                    horizontalAlignment: Text.AlignHCenter
-                    style: Text.Sunken
-                    font.underline: false
-                    styleColor: "#ffffff"
-                    font.pixelSize: 22
-                    font.italic: false
-                    font.bold: false
-                }
-
-                MouseArea {
-                    id: mouseArea7
-                    x: -96
-                    y: -90
-                    anchors.fill: parent
-                }
+            SquareButtonMy {
+                id: squareButtonMy4
+                texxt: "Settings"
             }
         }
-
-
-
     }
 
     Rectangle {
@@ -293,5 +200,4 @@ ApplicationWindow {
             }
         }
     }
-
 }

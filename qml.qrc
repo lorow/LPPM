@@ -3,6 +3,6 @@
         <file>main.qml</file>
         <file>RightSideMy.qml</file>
         <file>ColorClickableButton.qml</file>
-        <file>squareButton.qml</file>
+        <file>SquareButtonMy.qml</file>
     </qresource>
 </RCC>

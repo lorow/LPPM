@@ -1,6 +1,7 @@
 import QtQuick 2.2
 
 Rectangle {
+    property  var coloText: "#ffffff"
     id: colorButtonClickable
     height: 50
     color: "#1f2225"
@@ -12,7 +13,7 @@ Rectangle {
     anchors.topMargin: 30
 
     Rectangle {
-        id: rectangle1
+        id: copytext
         height: 20
         color: "#b04b4b"
         anchors.bottom: parent.bottom
@@ -33,7 +34,6 @@ Rectangle {
             font.strikeout: false
             font.underline: false
             font.pixelSize: 15
-            font.bold: false
             font.family: "Tahoma"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -44,7 +44,7 @@ Rectangle {
     Text {
         id: text4
         color: "#ffffff"
-        text: qsTr("ffffff")
+        text: colorButtonClickable.coloText
         verticalAlignment: Text.AlignVCenter
         textFormat: Text.PlainText
         font.italic: false
