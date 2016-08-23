@@ -4,5 +4,10 @@
         <file>RightSideMy.qml</file>
         <file>ColorClickableButton.qml</file>
         <file>SquareButtonMy.qml</file>
+        <file>svgIcons/export.svg</file>
+        <file>svgIcons/load.svg</file>
+        <file>svgIcons/save.svg</file>
+        <file>svgIcons/settings.svg</file>
+        <file>addButtonMy.qml</file>
     </qresource>
 </RCC>

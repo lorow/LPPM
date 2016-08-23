@@ -13,7 +13,7 @@ ApplicationWindow {
     RightSideMy {
         id: rightSideMy1
         width: 240
-        color: "#26292b"
+        color: "#303030"
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.bottom: parent.bottom
@@ -50,7 +50,7 @@ ApplicationWindow {
         Rectangle {
             id: colorPicerBackground
             height: 240
-            color: "#232325"
+            color: "#4b4b4b"
             anchors.right: parent.right
             anchors.rightMargin: 0
             anchors.left: parent.left
@@ -75,33 +75,33 @@ ApplicationWindow {
 
             SquareButtonMy {
                 id: squareButtonMy1
-                radius: 5
-                texxt: "Save"
+                radius: 5                
+                iconLocation: "svgIcons/save.svg"
             }
 
             SquareButtonMy {
                 id: squareButtonMy2
-                radius: 5
-                texxt: "Load"
+                radius: 5              
+                iconLocation: "svgIcons/load.svg"
             }
 
             SquareButtonMy {
                 id: squareButtonMy3
                 radius: 5
-                texxt: "Export"
+                iconLocation: "svgIcons/export.svg"
             }
 
             SquareButtonMy {
                 id: squareButtonMy4
                 radius: 5
-                texxt: "Settings"
+                iconLocation: "svgIcons/settings.svg"
             }
         }
     }
 
     Rectangle {
         id: workspace
-        color: "#383838"
+        color: "#404040"
         border.width: 0
         anchors.left: parent.left
         anchors.leftMargin: 240
@@ -114,19 +114,20 @@ ApplicationWindow {
 
         GridView {
             id: gridView1
-            anchors.rightMargin: 10
-            snapMode: GridView.NoSnap
-            boundsBehavior: Flickable.DragOverBounds
-            anchors.leftMargin: 10
-            anchors.bottomMargin: 10
-            anchors.topMargin: 10
+            layoutDirection: Qt.RightToLeft
+            anchors.rightMargin: 5
+            anchors.leftMargin: 5
+            anchors.bottomMargin: 5
+            anchors.topMargin: 5
             anchors.fill: parent
-            delegate: Item {
-                x: 5
-                height: 50
-            }
-            cellWidth: 70
             cellHeight: 70
+            cellWidth: 70
+            delegate: Item {
+                height: 50
+                Column {
+                    spacing: 5
+                }
+            }
             model: ListModel {
                 ListElement {
                     name: "Grey"
@@ -155,7 +156,7 @@ ApplicationWindow {
         id: workspace2
         y: 770
         height: 75
-        color: "#424242"
+        color: "#4b4b4b"
         border.width: 0
         anchors.left: parent.left
         anchors.leftMargin: 240
@@ -164,36 +165,6 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
-        Rectangle {
-            id: addButton
-            x: 1137
-            y: 10
-            width: 55
-            height: 55
-            color: "#717373"
-            radius: 0
-            border.color: "#252323"
-            border.width: 5
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 8
 
-            MouseArea {
-                id: mouseArea1
-                anchors.fill: parent
-            }
-
-            Text {
-                id: text1
-                color: "#ffffff"
-                text: qsTr("ADD")
-                font.family: "Tahoma"
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                anchors.fill: parent
-                font.pixelSize: 12
-            }
-        }
     }
 }

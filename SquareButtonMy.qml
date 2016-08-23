@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 
 Rectangle {
-    property  var texxt: "default"
+    property  var iconLocation : "svgIcons/settings.svg"
     id: rectangleButtonClickable
     width: 86
     height: 80
@@ -11,27 +11,18 @@ Rectangle {
     border.width: 0
     border.color: "#060606"
 
-    Text {
-        id: text7
-        width: 90
-        color: "#ffffff"
-        text: rectangleButtonClickable.texxt
-        font.strikeout: false
-        verticalAlignment: Text.AlignVCenter
-        font.family: "Tahoma"
-        anchors.fill: parent
-        textFormat: Text.PlainText
-        horizontalAlignment: Text.AlignHCenter
-        style: Text.Sunken
-        font.underline: false
-        styleColor: "#ffffff"
-        font.pixelSize: 22
-        font.italic: false
-        font.bold: false
-    }
-
     MouseArea {
         id: mouseArea5
         anchors.fill: parent
+    }
+
+    Image {
+        id: image1
+        anchors.rightMargin: 25
+        anchors.leftMargin: 25
+        anchors.bottomMargin: 25
+        anchors.topMargin: 25
+        anchors.fill: parent
+        source: rectangleButtonClickable.iconLocation
     }
 }
