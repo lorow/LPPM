@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+item {
 Rectangle {
     id: addButton
     x: 1137
@@ -29,4 +29,5 @@ Rectangle {
         anchors.fill: parent
         source: "svgIcons/add.svg"
     }
+}
 }

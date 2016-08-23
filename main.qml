@@ -7,7 +7,7 @@ ApplicationWindow {
     visible: true
     width: Screen.width
     height: Screen.height
-    color: "#2c2f33"
+    color: "#4b4b4b"
     title: "Palette Maker"
 
     RightSideMy {
@@ -50,7 +50,7 @@ ApplicationWindow {
         Rectangle {
             id: colorPicerBackground
             height: 240
-            color: "#4b4b4b"
+            color: "#3b3a3a"
             anchors.right: parent.right
             anchors.rightMargin: 0
             anchors.left: parent.left
@@ -75,13 +75,13 @@ ApplicationWindow {
 
             SquareButtonMy {
                 id: squareButtonMy1
-                radius: 5                
+                radius: 5
                 iconLocation: "svgIcons/save.svg"
             }
 
             SquareButtonMy {
                 id: squareButtonMy2
-                radius: 5              
+                radius: 5
                 iconLocation: "svgIcons/load.svg"
             }
 
@@ -104,28 +104,41 @@ ApplicationWindow {
         color: "#404040"
         border.width: 0
         anchors.left: parent.left
-        anchors.leftMargin: 240
+        anchors.leftMargin: 250
         anchors.top: parent.top
-        anchors.topMargin: 0
+        anchors.topMargin: 10
         anchors.bottom: workspace2.top
         anchors.bottomMargin: 0
         anchors.right: parent.right
-        anchors.rightMargin: 0
+        anchors.rightMargin: 10
 
         GridView {
             id: gridView1
-            layoutDirection: Qt.RightToLeft
             anchors.rightMargin: 5
             anchors.leftMargin: 5
             anchors.bottomMargin: 5
-            anchors.topMargin: 5
+            anchors.topMargin: 10
             anchors.fill: parent
             cellHeight: 70
             cellWidth: 70
             delegate: Item {
+                x: 5
                 height: 50
                 Column {
                     spacing: 5
+                    Rectangle {
+                        width: 40
+                        height: 40
+                        color: colorCode
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    Text {
+                        x: 5
+                        text: name
+                        font.bold: true
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
                 }
             }
             model: ListModel {
@@ -151,7 +164,6 @@ ApplicationWindow {
             }
         }
     }
-
     Rectangle {
         id: workspace2
         y: 770
@@ -165,6 +177,48 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
+        Rectangle {
+            id: addButton
+            x: 1137
+            y: 10
+            width: 65
+            height: 55
+            color: "#b04b4b"
+            radius: 0
+            border.color: "#252323"
+            border.width: 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.right: parent.right
+            anchors.rightMargin: 8
 
+            MouseArea {
+                id: mouseArea1
+                anchors.fill: parent
+            }
+
+            Image {
+                id: image1
+                anchors.rightMargin: 15
+                anchors.leftMargin: 15
+                anchors.bottomMargin: 10
+                anchors.topMargin: 10
+                anchors.fill: parent
+                source: "svgIcons/add.svg"
+            }
+        }
+    }
+
+    Rectangle {
+        id: debuger
+        height: 15
+        color: "#4b4b4b"
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 240
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        z: 1
     }
 }
