@@ -8,6 +8,9 @@
         <file>svgIcons/load.svg</file>
         <file>svgIcons/save.svg</file>
         <file>svgIcons/settings.svg</file>
-        <file>addButtonMy.qml</file>
+        <file>ADDDBUTTON.qml</file>
+        <file>svgIcons/add.svg</file>
+        <file>ColorBlock.qml</file>
+        <file>Variables.qml</file>
     </qresource>
 </RCC>

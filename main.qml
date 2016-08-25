@@ -61,10 +61,10 @@ ApplicationWindow {
 
         Grid {
             id: grid1
-            y: 668
-            height: 169
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 63
+            anchors.bottomMargin: 121
+            anchors.top: colorClickableButton3.bottom
+            anchors.topMargin: 72
             anchors.right: parent.right
             anchors.rightMargin: 29
             anchors.left: parent.left
@@ -114,62 +114,35 @@ ApplicationWindow {
 
         GridView {
             id: gridView1
+            flickableDirection: Flickable.VerticalFlick
+            snapMode: GridView.NoSnap
+            highlightRangeMode: GridView.NoHighlightRange
+            highlightMoveDuration: 148
+            flow: GridView.FlowLeftToRight
+            layoutDirection: Qt.RightToLeft
             anchors.rightMargin: 5
             anchors.leftMargin: 5
-            anchors.bottomMargin: 5
+            anchors.bottomMargin: 10
             anchors.topMargin: 10
             anchors.fill: parent
-            cellHeight: 70
-            cellWidth: 70
             delegate: Item {
-                x: 5
-                height: 50
+                height: 100
                 Column {
-                    spacing: 5
-                    Rectangle {
-                        width: 40
-                        height: 40
-                        color: colorCode
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
-
-                    Text {
-                        x: 5
-                        text: name
-                        font.bold: true
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                   ColorBlock
+                   { width: 100 ;height: 100}
                 }
             }
             model: ListModel {
-                ListElement {
-                    name: "Grey"
-                    colorCode: "grey"
-                }
-
-                ListElement {
-                    name: "Red"
-                    colorCode: "red"
-                }
-
-                ListElement {
-                    name: "Blue"
-                    colorCode: "blue"
-                }
-
-                ListElement {
-                    name: "Green"
-                    colorCode: "green"
-                }
+              id: tEST
             }
+            cellHeight: 100
+            cellWidth: 100
         }
     }
     Rectangle {
         id: workspace2
-        y: 770
         height: 75
         color: "#4b4b4b"
-        border.width: 0
         anchors.left: parent.left
         anchors.leftMargin: 240
         anchors.right: parent.right
@@ -177,35 +150,8 @@ ApplicationWindow {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
-        Rectangle {
-            id: addButton
-            x: 1137
-            y: 10
-            width: 65
-            height: 55
-            color: "#b04b4b"
-            radius: 0
-            border.color: "#252323"
-            border.width: 0
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 8
-
-            MouseArea {
-                id: mouseArea1
-                anchors.fill: parent
-            }
-
-            Image {
-                id: image1
-                anchors.rightMargin: 15
-                anchors.leftMargin: 15
-                anchors.bottomMargin: 10
-                anchors.topMargin: 10
-                anchors.fill: parent
-                source: "svgIcons/add.svg"
-            }
+        ADDDBUTTON {
+            id: aDDDBUTTON1
         }
     }
 
@@ -219,6 +165,7 @@ ApplicationWindow {
         anchors.leftMargin: 240
         anchors.top: parent.top
         anchors.topMargin: 0
-        z: 1
+
     }
+
 }
