@@ -18,12 +18,9 @@ Rectangle {
     MouseArea {
         id: mouseArea1
         anchors.fill: parent
-
         onClicked:
         {
-             variables1.numbeR++
-            console.log(variables1.normalName);
-            var test = tEST.append(ListElement);
+            var test = listModelMy.append(ListElement);
         }
     }
 

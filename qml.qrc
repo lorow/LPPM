@@ -12,5 +12,6 @@
         <file>svgIcons/add.svg</file>
         <file>ColorBlock.qml</file>
         <file>Variables.qml</file>
+        <file>WORKSPACEMY.qml</file>
     </qresource>
 </RCC>

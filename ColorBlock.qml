@@ -1,22 +1,24 @@
 import QtQuick 2.0
 
 Rectangle {
-    property string namE: namEE.normalName
+    Variables
+    {
+        id:vars
+    }
+
+
     property  var colorR
     id: namE
-    width: 70
-    height: 70
+    width: 100
+    height: 100
     color: colorR
-    Variables {id: namEE}
 
     MouseArea {
         id: mouseArea1
         anchors.fill: parent
-
         onClicked:
         {
-            console.log("test")
-            console.log(namE)
+
         }
     }
 }
