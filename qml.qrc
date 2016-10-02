@@ -13,5 +13,12 @@
         <file>ColorBlock.qml</file>
         <file>Variables.qml</file>
         <file>WORKSPACEMY.qml</file>
+        <file>colorPicker/content/Checkerboard.qml</file>
+        <file>colorPicker/content/ColorSlider.qml</file>
+        <file>colorPicker/content/ColorUtils.js</file>
+        <file>colorPicker/content/NumberBox.qml</file>
+        <file>colorPicker/content/PanelBorder.qml</file>
+        <file>colorPicker/content/SBPicker.qml</file>
+        <file>colorPicker/Colorpicker.qml</file>
     </qresource>
 </RCC>
