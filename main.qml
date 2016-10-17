@@ -26,25 +26,19 @@ ApplicationWindow {
         anchors.bottomMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-
-        Colorpicker {
-            id: colorpicker1
-            x: 414
-            y: 306
-        }
     }
     WORKSPACEMY{
         id: workspace
-        anchors.rightMargin: -775
-        anchors.bottomMargin: -21
-        anchors.leftMargin: 1035
-        anchors.topMargin: 31
+        anchors.rightMargin: 10
+        anchors.bottomMargin: -9
+        anchors.leftMargin: 250
+        anchors.topMargin: 19
         GridView {
             id: gridView1
-            anchors.rightMargin: 0
-            anchors.leftMargin: 0
-            anchors.bottomMargin: 0
-            anchors.topMargin: 0
+            anchors.rightMargin: 8
+            anchors.leftMargin: -8
+            anchors.bottomMargin: 20
+            anchors.topMargin: -20
             anchors.fill: parent
             flickableDirection: Flickable.VerticalFlick
             snapMode: GridView.NoSnap
@@ -60,6 +54,12 @@ ApplicationWindow {
 
             cellHeight: 100
             cellWidth: 100
+
+            Colorpicker {
+                id: colorpicker1
+                x: 155
+                y: 162
+            }
         }
     }
     Rectangle {

@@ -4,8 +4,7 @@ import "content/ColorUtils.js" as ColorUtils
 
 Rectangle {
     id: colorPicker
-    property color colorValue: ColorUtils.hsba(hueSlider.value, sbPicker.saturation,
-                                               sbPicker.brightness, alphaSlider.value)
+    property color colorValue: ColorUtils.hsba(hueSlider.value, sbPicker.saturation,sbPicker.brightness, alphaSlider.value)
     width: 300; height: 200
     color: "#3C3C3C"
     Row {
@@ -23,7 +22,7 @@ Rectangle {
             anchors.bottomMargin: 0
             anchors.right: parent.right
             anchors.rightMargin: 100
-            hueColor : hueSlider.value
+            hueColor : ColorUtils.hsba(hueSlider.value, 1.0, 1.0, 1.0, 1.0)
         }
 
         // hue picking slider
@@ -46,7 +45,7 @@ Rectangle {
                     GradientStop { position: 0.0;  color: "#FF0000" }
                 }
             }
-            ColorSlider { id: hueSlider; anchors.fill: parent }
+            ColorSlider { id: hueSlider; anchors.fill: parent;}
         }
 
         // alpha (transparency) picking slider
@@ -84,6 +83,7 @@ Rectangle {
                 width: parent.width; height: 30
                 Checkerboard { cellSide: 5 }
                 Rectangle {
+                    id: tuSiePojawiaKolor
                     width: parent.width; height: 30
                     border.width: 1; border.color: "black"
                     color: colorPicker.colorValue
@@ -95,6 +95,7 @@ Rectangle {
                 id: colorEditBox
                 height: 15; width: parent.width
                 TextInput {
+                    id: wartoscKoloruPoHash
                     anchors.fill: parent
                     color: "#AAAAAA"
                     selectionColor: "#FF7777AA"
@@ -110,9 +111,9 @@ Rectangle {
             Column {
                 id: column1
                 width: parent.width
-                NumberBox { anchors.right: parent.right; anchors.rightMargin: 0; anchors.left: parent.left; anchors.leftMargin: 0; caption: "H:"; value: hueSlider.value.toFixed(2) }
-                NumberBox { anchors.left: parent.left; anchors.leftMargin: 0; anchors.right: parent.right; anchors.rightMargin: 0; caption: "S:"; value: sbPicker.saturation.toFixed(2) }
-                NumberBox { anchors.left: parent.left; anchors.leftMargin: 0; anchors.right: parent.right; anchors.rightMargin: 0; caption: "B:"; value: sbPicker.brightness.toFixed(2) }
+                NumberBox { id: wartoscH; anchors.right: parent.right; anchors.rightMargin: 0; anchors.left: parent.left; anchors.leftMargin: 0; caption: "H:"; value: hueSlider.value.toFixed(2) }
+                NumberBox { id: wartoscS; anchors.left: parent.left; anchors.leftMargin: 0; anchors.right: parent.right; anchors.rightMargin: 0; caption: "S:"; value: sbPicker.saturation.toFixed(2) }
+                NumberBox { id: wartoscB; anchors.left: parent.left; anchors.leftMargin: 0; anchors.right: parent.right; anchors.rightMargin: 0; caption: "B:"; value: sbPicker.brightness.toFixed(2) }
             }
 
             // filler rectangle
@@ -126,6 +127,7 @@ Rectangle {
                 id: column2
                 width: parent.width
                 NumberBox {
+                    id: wartoscR
                     anchors.right: parent.right
                     anchors.rightMargin: 0
                     anchors.left: parent.left
@@ -135,6 +137,7 @@ Rectangle {
                     min: 0; max: 255
                 }
                 NumberBox {
+                    id: wartoscG
                     anchors.right: parent.right
                     anchors.rightMargin: 0
                     anchors.left: parent.left
@@ -144,6 +147,7 @@ Rectangle {
                     min: 0; max: 255
                 }
                 NumberBox {
+                    id: wartoscRGBb
                     anchors.right: parent.right
                     anchors.rightMargin: 0
                     anchors.left: parent.left
@@ -156,6 +160,7 @@ Rectangle {
 
             // alpha value box
             NumberBox {
+                id: wartoscA
                 anchors.right: parent.right
                 anchors.rightMargin: 0
                 anchors.left: parent.left

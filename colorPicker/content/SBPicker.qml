@@ -2,8 +2,8 @@
 import QtQuick 2.2
 
 Item {
-    id: root
-    property color hueColor : "blue"
+    id: rooT
+    property color hueColor : "red"
     property real saturation : pickerCursor.x/width
     property real brightness : 1 - pickerCursor.y/height
     width: 200; height: 200
@@ -13,7 +13,7 @@ Item {
         rotation: -90
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#FFFFFF" }
-            GradientStop { position: 1.0; color: root.hueColor }
+            GradientStop { position: 1.0; color: rooT.hueColor }
         }
     }
     Rectangle {
