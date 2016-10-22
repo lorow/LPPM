@@ -9,6 +9,9 @@ ApplicationWindow {
     visible: true
     width: 1000
     height: 700
+
+    minimumHeight: 300
+    minimumWidth: 200
     color: "#222222"
     title: "Palette Maker"
 
@@ -114,27 +117,27 @@ ApplicationWindow {
                 anchors.fill: parent
 
                 // this makes the app more responsible
-                property int maximized: 0
+                property bool maximized: false
                 anchors.topMargin: -2
                 anchors.bottomMargin: -2
                 anchors.leftMargin: -2
                 anchors.rightMargin: -2
                 onPressed:
                 {
-                    // let's find out if we should maxime or only change the size and position of the window
-                    if (maximized == 0)
+                    // let's find out if we should maxime the window or not
+
+                    if (maximized == false)
                     {
                         applicationWindow1.showMaximized()
-                        maximized = 1
+                        maximized = true
+                        console.log(maximized)
                     }
-                    else
+                    else if (maximized == true)
                     {
-                        applicationWindow1.width = 1000
-                        applicationWindow1.height = 700
 
-                        applicationWindow1.x = 0
-                        applicationWindow1.y =0
-                        maximized = 0
+                        applicationWindow1.showNormal()
+                        maximized = false
+                        console.log(maximized)
                     }
                 }
 
@@ -192,11 +195,12 @@ ApplicationWindow {
         id: leftSide
         width: 10
         height: 660
-        color: "#ffffff"
+        color: "#000000"
+        opacity: 0
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.top: parent.top
-        anchors.topMargin: 40
+        anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 0
 
@@ -205,8 +209,10 @@ ApplicationWindow {
             anchors.fill: parent
             property point lastMousePos: Qt.point(0, 0)
             width: 1
-           onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
-           onMouseXChanged: applicationWindow1.width += (mouseX + lastMousePos.x)
+            opacity: 0
+            anchors.rightMargin: 0
+            onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
+            onMouseXChanged: applicationWindow1.width += (mouseX + lastMousePos.x)
         }
     }
 
@@ -216,13 +222,14 @@ ApplicationWindow {
         y: 4
         width: 10
         height: 660
-        color: "#ffffff"
+        color: "#000000"
+        opacity: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
         anchors.bottom: parent.bottom
         anchors.top: parent.top
-        anchors.topMargin: 40
+        anchors.topMargin: 10
 
         MouseArea {
             id: mouseArea5
@@ -239,7 +246,9 @@ ApplicationWindow {
         id: bottomSide
         y: 4
         height: 10
-        color: "#ffffff"
+        color: "#000000"
+        opacity: 0
+        border.color: "#000000"
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.right: parent.right
@@ -247,10 +256,36 @@ ApplicationWindow {
         anchors.bottomMargin: 0
         anchors.bottom: parent.bottom
         MouseArea {
-                anchors.fill: parent
-                property point lastMousePos: Qt.point(0, 0)
-                onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
-                onMouseYChanged: applicationWindow1.height += (mouseY - lastMousePos.y)
+            anchors.fill: parent
+            property point lastMousePos: Qt.point(0, 0)
+            onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
+            onMouseYChanged: applicationWindow1.height += (mouseY - lastMousePos.y)
         }
+    }
+
+    Rectangle {
+        id: topSide
+        x: -1
+        height: 10
+        color: "#ffffff"
+        opacity: 0
+        border.color: "#000000"
+        z: 1
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        MouseArea {
+            property point lastMousePos: Qt.point(0, 0)
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.top: parent.top
+            onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
+            onMouseYChanged: applicationWindow1.height += (mouseY - lastMousePos.y)
+        }
+        anchors.rightMargin: 0
     }
 }
