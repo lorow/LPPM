@@ -20,5 +20,7 @@
         <file>colorPicker/content/PanelBorder.qml</file>
         <file>colorPicker/content/SBPicker.qml</file>
         <file>colorPicker/Colorpicker.qml</file>
+        <file>svgIcons/settings1.png</file>
+        <file>svgIcons/settings2.png</file>
     </qresource>
 </RCC>
