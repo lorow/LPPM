@@ -6,7 +6,6 @@
         <file>svgIcons/save.svg</file>
         <file>svgIcons/settings.svg</file>
         <file>svgIcons/add.svg</file>
-        <file>Variables.qml</file>
         <file>colorPicker/content/Checkerboard.qml</file>
         <file>colorPicker/content/ColorSlider.qml</file>
         <file>colorPicker/content/ColorUtils.js</file>
@@ -16,5 +15,6 @@
         <file>colorPicker/Colorpicker.qml</file>
         <file>svgIcons/settings1.png</file>
         <file>svgIcons/settings2.png</file>
+        <file>utils/Variables.qml</file>
     </qresource>
 </RCC>
