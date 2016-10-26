@@ -15,15 +15,16 @@ ApplicationWindow {
     color: "#ffffff"
     title: "Palette Maker"
 
-    flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window | Qt.WindowStaysOnTopHint
+    flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window
 
     Rectangle {
         id: mainWindow
         color: "#222222"
+        anchors.top: parent.top
+        anchors.topMargin: 0
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         width:  applicationWindow1.width
-        height: 700
         anchors.right: parent.right
         anchors.left: parent.left
 
@@ -239,180 +240,110 @@ ApplicationWindow {
         }
 
         Rectangle {
-            id: leftSide
-            x: 450
-            y: 186
-            z: 2
-            width: 10
-            height: 660
-            color: "#000000"
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0
+            id: testWindow
+            color: "#e11e1e"
             anchors.top: parent.top
-            anchors.topMargin: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-
-            MouseArea
-            {
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: rightSide
-            x: 640
-            y: 186
-            z: 2
-            width: 10
-            color: "#000000"
-            anchors.top: parent.top
-            anchors.topMargin: 10
+            anchors.topMargin: 250
             anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.bottomMargin: 0
+            anchors.rightMargin: 400
+            anchors.left: parent.left
+            anchors.leftMargin: 400
             anchors.bottom: parent.bottom
-
-            MouseArea {
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: topSide
-            x: 450
-            y: 176
-            z: 2
-            height: 10
-            color: "#ffffff"
-            border.color: "#000000"
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.left: parent.left
-            MouseArea
-            {
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: bottomSide
-            x: 460
-            y: 366
-            z: 2
-            height: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            anchors.bottom: parent.bottom
-            MouseArea
-            {
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: testRect
-            x: 382
-            y: 250
-            width: 200
-            height: 200
-            color: "#e73333"
+            anchors.bottomMargin: 250
 
             Rectangle {
-                id: leftSide1
-                x: 450
-                y: 186
-                z: 2
-                width: 10
-                height: 660
-                anchors.topMargin: 10
-
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
-                anchors.left: parent.left
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                }
-
-            }
-
-            Rectangle {
-                id: rightSide1
-                x: 640
-                y: 186
-                z: 2
-                width: 10
-                anchors.topMargin: 10
-
-                anchors.bottom: parent.bottom
-                anchors.right: parent.right
-                anchors.top: parent.top
-                MouseArea
-                {
-                    anchors.fill: parent
-                }
-            }
-
-            Rectangle {
-                id: bottomSide1
-                x: 460
-                y: 190
+                id: topSide
                 height: 10
-                z: 2
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 0
-                anchors.leftMargin: 12
-                anchors.rightMargin: 8
-
+                color: "#ffffff"
                 anchors.right: parent.right
+                anchors.rightMargin: 0
                 anchors.left: parent.left
-                MouseArea
-                { anchors.fill: parent
-                    property point lastMousePos: Qt.point(0,0)
-                   onPressed:
-                   {
-                   //let's set anchors properly so we can scale it.
-//                         topSide1.anchors.top = undefined
-//                         bottomSide1.anchors.bottom = testRect.bottom
-                         lastMousePos = Qt.point(mouseX, mouseY);
-                   }
-                   onReleased:
-                  {
-                        //topSide1.anchors.top = testRect.top
-                  }
-                  onMouseYChanged: testRect.height += (mouseY - lastMousePos.y)
+                anchors.leftMargin: 0
+                anchors.top: parent.top
+                anchors.topMargin: 0
 
+                //you HAVE to change the WINDOW anchors, NOT the scaler anchors motherfucker!
+                MouseArea {
+                    anchors.fill: parent
+                    property point lastMousePos: Qt.point(0, 0)
+                    onPressed:
+                    {
+                        testWindow.anchors.bottom = mainWindow.bottom
+                        testWindow.anchors.top = undefined
+
+                        lastMousePos = Qt.point(mouseX, mouseY);
+                    }
+                    onMouseYChanged: testWindow.height -= (mouseY - lastMousePos.y)
                 }
             }
 
             Rectangle {
-                id: topSide1
-                x: 450
-                y: 0
-                z: 2
+                id: bottomSide
                 height: 10
+                color: "#ffffff"
                 anchors.left: parent.left
                 anchors.right: parent.right
-                MouseArea
-                { anchors.fill: parent
-                    property point lastMousePos: Qt.point(0,0)
-                   onPressed:
-                   {
-                   //let's set anchors properly so we can scale it.
-//                         topSide1.anchors.top = undefined
-//                         bottomSide1.anchors.bottom = testRect.bottom
-                         lastMousePos = Qt.point(mouseX, mouseY);
-                   }
-                   onReleased:
-                  {
-                        //topSide1.anchors.top = testRect.top
-                  }
-                  onMouseYChanged: testRect.height -= (mouseY - lastMousePos.y)
+                anchors.bottom: parent.bottom
+                MouseArea {
+                    anchors.fill: parent
+                    property point lastMousePos: Qt.point(0, 0)
+                    onPressed:
+                    {
+                        testWindow.anchors.bottom = undefined
+                        testWindow.anchors.top = mainWindow.top
 
+                        lastMousePos = Qt.point(mouseX, mouseY);
+                    }
+                    onMouseYChanged: testWindow.height += (mouseY - lastMousePos.y)
+                }
+            }
+
+            Rectangle {
+                id: leftSide
+                width: 10
+                color: "#ffffff"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 10
+                anchors.top: parent.top
+                anchors.topMargin: 10
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                MouseArea {
+                    anchors.fill: parent
+                    property point lastMousePos: Qt.point(0, 0)
+                    onPressed:
+                    {
+                        testWindow.anchors.right = mainWindow.right
+                        testWindow.anchors.left = undefined
+
+                        lastMousePos = Qt.point(mouseX, mouseY);
+                    }
+                    onMouseXChanged: testWindow.width -= (mouseX - lastMousePos.x)
+                }
+            }
+
+            Rectangle {
+                id: rightSide
+                x: 6
+                width: 10
+                color: "#ffffff"
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 11
+                anchors.right: parent.right
+                anchors.rightMargin: 0
+                MouseArea {
+                    anchors.fill: parent
+                    property point lastMousePos: Qt.point(0, 0)
+                    onPressed:
+                    {
+                        testWindow.anchors.right =  undefined
+                        testWindow.anchors.left = mainWindow.left
+
+                        lastMousePos = Qt.point(mouseX, mouseY);
+                    }
+                    onMouseXChanged: testWindow.width += (mouseX - lastMousePos.x)
                 }
             }
         }
