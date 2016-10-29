@@ -1,34 +1,8 @@
-import QtQuick 2.5
-import QtQuick.Controls 1.4
-import QtQuick.Window 2.0
-import QtQml.Models 2.2
-
-import "utils"
-import "colorPicker"
-
-ApplicationWindow
-{
-    id: window
-
-    //setting the width and height of the window
-    visible: true
-
-    width:  1000//vars.wWidth
-    height:  700//vars.wHeight
-    title: "Palette Maker"
-
-    flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window
-
-
-    property point startMousePos
-    property point startWindowPos
-    property size startWindowSize
-
-       function absoluteMousePos(mouseArea)
-       {
-        var windowAbs = mouseArea.mapToItem(null, mouseArea.mouseX, mouseArea.mouseY)
-        return Qt.point(windowAbs.x + window.x,windowAbs.y + window.y)
-       }
+import QtQuick 2.0
+Item {
+    id: root
+    width: vars.wWidth
+    height: vars.wHeight
 
     Variables
     {
@@ -47,6 +21,7 @@ ApplicationWindow
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.left: parent.left
+
 
         TopBar
         {
@@ -67,22 +42,16 @@ ApplicationWindow
             //you HAVE to change the WINDOW anchors, NOT the scaler anchors motherfucker!
             MouseArea
             {
-                id: topArea
                 anchors.fill: parent
+                property point lastMousePos: Qt.point(0, 0)
                 onPressed:
                 {
-                  startMousePos = absoluteMousePos(topArea)
-                  startWindowPos = Qt.point(window.x, window.y)
-                  startWindowSize = Qt.size(window.width, window.height)
-                 }
-                onMouseYChanged:
-                {
-                 var abs = absoluteMousePos(topArea)
-                 var newHeight = Math.max(window.minimumHeight, startWindowSize.height - (abs.y - startMousePos.y))
-                 var newY = startWindowPos.y - (newHeight - startWindowSize.height)
-                 window.y = newY
-                 window.height = newHeight
+                    mainWindow.anchors.bottom = root.bottom
+                    mainWindow.anchors.top = undefined
+
+                    lastMousePos = Qt.point(mouseX, mouseY);
                 }
+                onMouseYChanged: vars.wHeight -= (mouseY - lastMousePos.y) //testWindow.height -= (mouseY - lastMousePos.y)
             }
         }
 
@@ -100,9 +69,12 @@ ApplicationWindow
                 property point lastMousePos: Qt.point(0, 0)
                 onPressed:
                 {
+                    mainWindow.anchors.bottom = undefined
+                    mainWindow.anchors.top = root.top
+
                     lastMousePos = Qt.point(mouseX, mouseY);
                 }
-                onMouseYChanged: window.height += (mouseY - lastMousePos.y) //testWindow.height += (mouseY - lastMousePos.y)
+                onMouseYChanged: vars.wHeight += (mouseY - lastMousePos.y) //testWindow.height += (mouseY - lastMousePos.y)
             }
         }
 
@@ -118,22 +90,16 @@ ApplicationWindow
             anchors.left: parent.left
             MouseArea
             {
-                 id: leftArea
                 anchors.fill: parent
+                property point lastMousePos: Qt.point(0, 0)
                 onPressed:
                 {
-                  startMousePos = absoluteMousePos(leftArea)
-                  startWindowPos = Qt.point(window.x, window.y)
-                  startWindowSize = Qt.size(window.width, window.height)
-                 }
-                onMouseYChanged:
-                {
-                 var abs = absoluteMousePos(leftArea)
-                 var newWidth = Math.max(window.minimumWidth, startWindowSize.width - (abs.x - startMousePos.x))
-                 var newX = startWindowPos.x - (newWidth - startWindowSize.width)
-                 window.x = newX
-                 window.width = newWidth
+                    mainWindow.anchors.right = root.right
+                    mainWindow.anchors.left = undefined
+
+                    lastMousePos = Qt.point(mouseX, mouseY);
                 }
+                onMouseXChanged: vars.wWidth -= (mouseX - lastMousePos.x) //testWindow.width -= (mouseX - lastMousePos.x)
             }
         }
 
@@ -154,10 +120,14 @@ ApplicationWindow
                 property point lastMousePos: Qt.point(0, 0)
                 onPressed:
                 {
+                    mainWindow.anchors.right =  undefined
+                    mainWindow.anchors.left = root.left
+
                     lastMousePos = Qt.point(mouseX, mouseY);
                 }
-                onMouseXChanged: window.width+= (mouseX - lastMousePos.x) //testWindow.width += (mouseX - lastMousePos.x)
+                onMouseXChanged: vars.wWidth += (mouseX - lastMousePos.x) //testWindow.width += (mouseX - lastMousePos.x)
             }
         }
     }
 }
+
