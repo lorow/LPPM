@@ -1,11 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>svgIcons/export.svg</file>
-        <file>svgIcons/load.svg</file>
-        <file>svgIcons/save.svg</file>
-        <file>svgIcons/settings.svg</file>
-        <file>svgIcons/add.svg</file>
         <file>colorPicker/content/Checkerboard.qml</file>
         <file>colorPicker/content/ColorSlider.qml</file>
         <file>colorPicker/content/ColorUtils.js</file>
@@ -13,8 +8,16 @@
         <file>colorPicker/content/PanelBorder.qml</file>
         <file>colorPicker/content/SBPicker.qml</file>
         <file>colorPicker/Colorpicker.qml</file>
-        <file>svgIcons/settings1.png</file>
-        <file>svgIcons/settings2.png</file>
         <file>utils/Variables.qml</file>
+        <file>utils/MainWindowMy.qml</file>
+        <file>utils/TopBar.qml</file>
+        <file>utils/TestRect.qml</file>
+        <file>utils/svgIcons/add.svg</file>
+        <file>utils/svgIcons/export.svg</file>
+        <file>utils/svgIcons/load.svg</file>
+        <file>utils/svgIcons/save.svg</file>
+        <file>utils/svgIcons/settings.svg</file>
+        <file>utils/svgIcons/settings1.png</file>
+        <file>utils/svgIcons/settings2.png</file>
     </qresource>
 </RCC>
