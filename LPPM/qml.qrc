@@ -17,5 +17,6 @@
         <file>utils/svgIcons/settings.svg</file>
         <file>utils/svgIcons/settings1.png</file>
         <file>utils/svgIcons/settings2.png</file>
+        <file>utils/ResizeWindow.qml</file>
     </qresource>
 </RCC>
