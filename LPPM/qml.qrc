@@ -9,9 +9,7 @@
         <file>colorPicker/content/SBPicker.qml</file>
         <file>colorPicker/Colorpicker.qml</file>
         <file>utils/Variables.qml</file>
-        <file>utils/MainWindowMy.qml</file>
         <file>utils/TopBar.qml</file>
-        <file>utils/TestRect.qml</file>
         <file>utils/svgIcons/add.svg</file>
         <file>utils/svgIcons/export.svg</file>
         <file>utils/svgIcons/load.svg</file>

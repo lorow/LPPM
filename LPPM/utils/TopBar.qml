@@ -114,14 +114,14 @@ Rectangle
 
                 if (maximized == false)
                 {
-                    applicationWindow1.showMaximized()
+                    window.showMaximized()
                     maximized = true
                     console.log(maximized)
                 }
                 else if (maximized == true)
                 {
 
-                    applicationWindow1.showNormal()
+                    window.showNormal()
                     maximized = false
                     console.log(maximized)
                 }
@@ -167,7 +167,7 @@ Rectangle
             anchors.fill: parent
             onPressed:
             {
-                applicationWindow1.showMinimized()
+                window.showMinimized()
             }
         }
     }
@@ -209,7 +209,7 @@ Rectangle
         anchors.fill: parent
         property point lastMousePos: Qt.point(0, 0)
         onPressed: { lastMousePos = Qt.point(mouseX, mouseY); }
-        onMouseXChanged: applicationWindow1.x += (mouseX - lastMousePos.x)
-        onMouseYChanged: applicationWindow1.y += (mouseY - lastMousePos.y)
+        onMouseXChanged: window.x += (mouseX - lastMousePos.x)
+        onMouseYChanged: window.y += (mouseY - lastMousePos.y)
     }
 }

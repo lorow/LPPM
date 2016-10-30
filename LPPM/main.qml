@@ -12,6 +12,8 @@ ApplicationWindow
     visible: true
     width:  1000
     height:  700
+    minimumHeight: 200
+    minimumWidth: 300
     color: "#222222" // color of the window
     title: "Your Title"
 
@@ -22,6 +24,8 @@ ApplicationWindow
     property point startMousePos
     property point startWindowPos
     property size startWindowSize
+    property bool canScaleX: true
+    property bool canScaleY: true
 
        function absoluteMousePos(mouseArea)
        {
@@ -85,15 +89,25 @@ ApplicationWindow
            //for resizing from bottom we will have to use another method
            MouseArea
            {
+               id:bottomArea
                anchors.fill: parent
-               property point lastMousePos: Qt.point(0, 0)
                onPressed:
                {
-                    //first let's get the last mouse position..
-                   lastMousePos = Qt.point(mouseX, mouseY);
+                   //getting position of the mouse...
+                 startMousePos = absoluteMousePos(bottomArea)
+                   //...getting position of the position..
+                   //..and the mouse
+                 startWindowSize = Qt.size(window.width, window.height)
+                }
+               onMouseYChanged:
+               {
+                   //our mouse position will change so we will have to calculate it again
+                var abs = absoluteMousePos(bottomArea)
+                   //let's calculate the height too
+                var newHeight = Math.max(window.minimumHeight, startWindowSize.height + (abs.y - startMousePos.y))
+                   //now new position of the window
+                window.height = newHeight
                }
-               //.. and change the height of the window
-               onMouseYChanged: window.height += (mouseY - lastMousePos.y)
            }
        }
 
@@ -141,14 +155,22 @@ ApplicationWindow
            anchors.right: parent.right
            MouseArea
            {
+               id: rightArea
                anchors.fill: parent
-               //same as in bottomSide but with again changed direction
-               property point lastMousePos: Qt.point(0, 0)
+               //same as in the topArea but with changed direction
                onPressed:
                {
-                   lastMousePos = Qt.point(mouseX, mouseY);
+                 startMousePos = absoluteMousePos(rightArea)
+                 startWindowSize = Qt.size(window.width, window.height)
+                }
+               onMouseYChanged:
+               {
+                var abs = absoluteMousePos(rightArea)
+                var newWidth = Math.max(window.minimumWidth, startWindowSize.width + (abs.x - startMousePos.x))
+                window.width = newWidth
                }
-               onMouseXChanged: window.width+= (mouseX - lastMousePos.x)
            }
+
        }
 }
+
