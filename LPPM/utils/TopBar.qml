@@ -2,12 +2,14 @@ import QtQuick 2.0
 import "./svgIcons"
 Rectangle
 {
+    property var window
     id: topBar
     height: 40
     color: "#191818"
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
+
 
     Text
     {
