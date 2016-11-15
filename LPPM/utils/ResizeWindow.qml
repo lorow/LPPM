@@ -17,7 +17,7 @@ Item {
     Rectangle {
         id: topSide
         width: 0
-        height: 10
+        height: 5
         color: "transparent"
         anchors.right: parent.right
         anchors.left: parent.left
@@ -52,7 +52,7 @@ Item {
 
     Rectangle {
         id: bottomSide
-        height: 10
+        height: 5
         color: "transparent"
         anchors.left: parent.left
         anchors.right: parent.right
@@ -60,6 +60,7 @@ Item {
         //for resizing from bottom we will have to use another method
         MouseArea {
             id:bottomArea
+            cursorShape : Qt.SizeVerCursor
             anchors.fill: parent
             onPressed: {
                 //getting position of the mouse...
@@ -81,7 +82,7 @@ Item {
 
     Rectangle {
         id: leftSide
-        width: 10
+        width: 5
         color: "transparent"
 
         anchors.bottom: parent.bottom
@@ -92,6 +93,7 @@ Item {
 
         MouseArea {
             id: leftArea
+             cursorShape : Qt.SizeHorCursor
             anchors.fill: parent
             //same as in the topArea but with changed direction
             onPressed: {
@@ -111,7 +113,7 @@ Item {
 
     Rectangle {
         id: rightSide
-        width: 10
+        width: 5
         color: "transparent"
 
         anchors.top: parent.top
@@ -122,6 +124,7 @@ Item {
 
         MouseArea {
             id: rightArea
+            cursorShape : Qt.SizeHorCursor
             anchors.fill: parent
             //same as in the topArea but with changed direction
             onPressed: {

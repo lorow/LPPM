@@ -3,14 +3,16 @@ import "./svgIcons"
 Rectangle
 {
     property var window
+
+    property int bestWidth: 40
+    property int bestHeight: 40
+    property int bestRadius: 20
     id: topBar
     height: 40
-    color: "#191818"
+    color: "#000000"
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
-
-
     Text
     {
         id: projectTitle
@@ -35,7 +37,7 @@ Rectangle
         width: 20
         height: 20
         radius: 3
-        color: "#191818"
+        color: "#000000"
 
         anchors.verticalCenterOffset: 2
         anchors.verticalCenter: parent.verticalCenter
@@ -71,10 +73,6 @@ Rectangle
         MouseArea
         {
             id: mouseArea1
-            anchors.topMargin: -2
-            anchors.bottomMargin: -2
-            anchors.leftMargin: -2
-            anchors.rightMargin: -2
             anchors.fill: parent
             onPressed:
             {
@@ -118,6 +116,10 @@ Rectangle
                 {
                     window.showMaximized()
                     maximized = true
+
+                    bestHeight = 50
+                    bestWidth = 50
+                    bestRadius = 25
                     console.log(maximized)
                 }
                 else if (maximized == true)
@@ -125,6 +127,10 @@ Rectangle
 
                     window.showNormal()
                     maximized = false
+
+                    bestWidth = 40
+                    bestHeight = 40
+                    bestRadius = 20
                     console.log(maximized)
                 }
             }
@@ -140,7 +146,7 @@ Rectangle
         z: 1
         width: 10
         height: 10
-        color: "#191818"
+        color: "#000000"
         anchors.right: maximizeButton.left
         anchors.rightMargin: 12
 
@@ -181,7 +187,7 @@ Rectangle
         z: 1
         width: 17
         height: 16
-        color: "#191818"
+        color: "#000000"
         anchors.left: parent.left
         anchors.leftMargin: 8
         anchors.verticalCenter: parent.verticalCenter
