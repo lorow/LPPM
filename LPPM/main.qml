@@ -41,25 +41,28 @@ ApplicationWindow
             id: save
             width: 50
             height: 30
-            color: "#191919"
+            color: "#0b0b0b"
             anchors.right: parent.right
-            anchors.rightMargin: 6
+            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 6
+            anchors.leftMargin: 0
             anchors.top: parent.top
             anchors.topMargin: 107
 
             MouseArea {
                 id: mouseArea1
                 anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {save.color = "#191919"}
+                onExited:{save.color = "#0b0b0b"}
             }
 
             Image {
                 id: image2
                 anchors.bottomMargin: 5
                 anchors.topMargin: 5
-                anchors.rightMargin: 15
-                anchors.leftMargin: 15
+                anchors.rightMargin: 21
+                anchors.leftMargin: 21
                 anchors.fill: parent
                 source: "utils/svgIcons/content-save.png"
             }
@@ -69,23 +72,26 @@ ApplicationWindow
             id: load
             y: -3
             height: 30
-            color: "#191919"
+            color: "#0b0b0b"
             anchors.right: parent.right
-            anchors.rightMargin: 5
+            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 6
+            anchors.leftMargin: 0
             anchors.top: save.bottom
             anchors.topMargin: 12
 
             MouseArea {
                 id: mouseArea2
                 anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {load.color = "#191919"}
+                onExited:{load.color = "#0b0b0b"}
             }
 
             Image {
                 id: image3
-                anchors.rightMargin: 13
-                anchors.leftMargin: 13
+                anchors.rightMargin: 19
+                anchors.leftMargin: 19
                 anchors.bottomMargin: 3
                 anchors.topMargin: 3
                 anchors.fill: parent
@@ -97,23 +103,26 @@ ApplicationWindow
             id: exportMy
             y: 1
             height: 30
-            color: "#191919"
+            color: "#0b0b0b"
             anchors.right: parent.right
-            anchors.rightMargin: 5
+            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 6
+            anchors.leftMargin: 0
             anchors.top: load.bottom
             anchors.topMargin: 12
 
             MouseArea {
                 id: mouseArea3
                 anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {exportMy.color = "#191919"}
+                onExited:{exportMy.color = "#0b0b0b"}
             }
 
             Image {
                 id: image4
-                anchors.rightMargin: 13
-                anchors.leftMargin: 13
+                anchors.rightMargin: 19
+                anchors.leftMargin: 19
                 anchors.bottomMargin: 3
                 anchors.topMargin: 3
                 anchors.fill: parent
@@ -124,23 +133,26 @@ ApplicationWindow
         Rectangle {
             id: importMy
             height: 30
-            color: "#191919"
+            color: "#0b0b0b"
             anchors.right: parent.right
-            anchors.rightMargin: 5
+            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 6
+            anchors.leftMargin: 0
             anchors.top: exportMy.bottom
             anchors.topMargin: 12
 
             MouseArea {
                 id: mouseArea4
                 anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {importMy.color = "#191919"}
+                onExited:{importMy.color = "#0b0b0b"}
             }
 
             Image {
                 id: image5
-                anchors.rightMargin: 13
-                anchors.leftMargin: 13
+                anchors.rightMargin: 19
+                anchors.leftMargin: 19
                 anchors.bottomMargin: 3
                 anchors.topMargin: 3
                 anchors.fill: parent
@@ -172,7 +184,7 @@ ApplicationWindow
             id: tilesCounter
             width: 82
             height: 22
-            color: "#ffffff"
+            color: "#d3d0d0"
             text: qsTr("Tiles in whole: ")
             anchors.left: parent.left
             anchors.leftMargin: 13
@@ -191,9 +203,9 @@ ApplicationWindow
             y: 6
             width: 15
             height: 22
-            color: "#ffffff"
+            color: "#d3d0d0"
             text: qsTr("0")
-            anchors.leftMargin: 0
+
             horizontalAlignment: Text.AlignHCenter
             anchors.bottom: parent.bottom
             font.pixelSize: 12
@@ -210,7 +222,7 @@ ApplicationWindow
             y: 6
             width: 82
             height: 22
-            color: "#ffffff"
+            color: "#d3d0d0"
             text: qsTr("Scanned tiles:")
             anchors.leftMargin: 20
             horizontalAlignment: Text.AlignHCenter
@@ -228,7 +240,7 @@ ApplicationWindow
             y: 12
             width: 15
             height: 22
-            color: "#ffffff"
+            color: "#d3d0d0"
             text: qsTr("0")
             anchors.leftMargin: 0
             horizontalAlignment: Text.AlignHCenter
@@ -407,18 +419,18 @@ ApplicationWindow
     //just for debugging
     Rectangle {
         id: addButton
-        x: 834
-        y: 614
-        z: 1
+        x: 970
+        y: 539
+        z: 3
         radius: topbar.bestRadius
         width: topbar.bestWidth
         height: topbar.bestHeight
         color: "#e74c3c"
 
         anchors.bottom: bottomSide.top
-        anchors.bottomMargin: 6
+        anchors.bottomMargin: 91
         anchors.right: rightSide.left
-        anchors.rightMargin: 6
+        anchors.rightMargin: -130
         Image {
             id: image1
             anchors.rightMargin: 12
@@ -447,13 +459,165 @@ ApplicationWindow
         anchors.right: rightSide.left
         anchors.bottom: bottomSide.top
         anchors.left: leftSide.right
-        // delegate:
+        cellHeight: 101
+        cellWidth: 101
 
-        cellHeight: 100
-        model: ListModel
-        {
+        delegate:
+            Item {
+            height: 110
+            Rectangle {
+                width: 100
+                height: 100
+                color: rightSide.pickerColor // "#191919" // here you must add color from picker
+                anchors.horizontalCenterOffset: 76
+                anchors.horizontalCenter: parent.horizontalCenter
+                Text {
+                    z: 3
+                    text: index
+                    color:"white"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.fill: parent
+                }
+            }
+        }
 
+        model: ListModel {
+            id: mod
+            //they are scrolling properly, you don't have to test it again
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+            ListElement{}
+
+
+
+
+        }
     }
-    cellWidth: 100
+
+
 }
-}
+

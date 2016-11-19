@@ -1,6 +1,43 @@
 import QtQuick 2.0
 
 Rectangle {
+
+    property int sizeOfTheTile: 50
+    property int tilesInRow: 5
+    property bool isOK: true
+    property string numbers:"0123456789"
+    property string previousText: "NULL"
+
+    function errorSignalMy()
+    {
+        isOK = true;
+        return qsTr(previousText);
+    }
+
+    function textChecker(textToCheck)
+    {
+       var numbers = "0123456789";
+       //initial loop
+        for(var i = 0; i < textToCheck.length; i++)
+        {
+            //chechking loop
+            for (var y = 0; y <=9; y++)
+            {
+                if(textToCheck[i] === numbers[y])
+                {
+                    console.debug("its ok, I'll leave it");
+                    break;
+                }
+                else if (y == 9)
+                {
+                    console.debug("something is wrong at: ", textToCheck[i]);
+                    isOK = false;
+                }
+            }
+        }
+    }
+
+
     id: underTop
     height: 40
     color: "#0d0d0d"
@@ -24,14 +61,27 @@ Rectangle {
         TextInput {
             id: textInput1
             color: "#ffffff"
-            text: qsTr("50")
-
+            text: sizeOfTheTile
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize: 9
             selectionColor: "#ffffff"
             maximumLength: 3
+            onTextChanged:
+            {
+                //Function which checks if number is number, not letters
+                textChecker(textInput1.text);
+
+                if(isOK)
+                {
+                    previousText = textInput1.text
+                }
+                else
+                {
+                    textInput1.text = errorSignalMy();
+                }
+            }
         }
     }
 
@@ -49,7 +99,7 @@ Rectangle {
         TextInput {
             id: textInput2
             color: "#ffffff"
-            text: "5"
+            text: tilesInRow
             font.family: "Verdana"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -58,8 +108,21 @@ Rectangle {
             font.pointSize: 9
             maximumLength: 3
             anchors.right: parent.right
-            selectionColor: "#ffffff"
             anchors.left: parent.left
+
+            onTextChanged:
+            {
+                //Function which checks if number is number, not letters
+                textChecker(textInput2.text);
+                if(isOK)
+                {
+                    previousText = textInput2.text
+                }
+                else
+                {
+                    textInput2.text = errorSignalMy();
+                }
+            }
         }
     }
 
