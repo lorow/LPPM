@@ -2,11 +2,19 @@ import QtQuick 2.0
 
 Rectangle {
 
-    property int sizeOfTheTile: 50
-    property int tilesInRow: 5
+    property int sizeOfTheTile: 100
+    property int spaceBetweenTiles: 1
     property bool isOK: true
     property string numbers:"0123456789"
     property string previousText: "NULL"
+
+
+    //reference to ListModel
+    property var modelList
+
+    //delete index
+    property int indexToDelete
+    width: 819
 
     function errorSignalMy()
     {
@@ -72,7 +80,7 @@ Rectangle {
             {
                 //Function which checks if number is number, not letters
                 textChecker(textInput1.text);
-
+                sizeOfTheTile = textInput1.text
                 if(isOK)
                 {
                     previousText = textInput1.text
@@ -99,7 +107,7 @@ Rectangle {
         TextInput {
             id: textInput2
             color: "#ffffff"
-            text: tilesInRow
+            text: spaceBetweenTiles
             font.family: "Verdana"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -114,6 +122,7 @@ Rectangle {
             {
                 //Function which checks if number is number, not letters
                 textChecker(textInput2.text);
+                spaceBetweenTiles = textInput2.text
                 if(isOK)
                 {
                     previousText = textInput2.text
@@ -150,7 +159,7 @@ Rectangle {
         y: 5
         width: 115
         color: "#ffffff"
-        text: "Tiles in row"
+        text: "Space between tiles"
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 6
         anchors.top: parent.top
@@ -183,12 +192,11 @@ Rectangle {
 
             onPressed: {
                 parent.color = "#c0392b"
+                //this will delete the tile in selected index
+                modelList.remove(indexToDelete);
             }
 
-            onReleased:
-            {
-                parent.color = "#F44336"
-            }
+            onReleased:  parent.color = "#F44336"
         }
 
         Text {
@@ -201,5 +209,35 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 12
         }
+    }
+
+    Rectangle {
+        id: clearButton
+        x: 516
+        y: 9
+        width: 50
+        color: "#e74c3c"
+        MouseArea {
+            id: mouseArea2
+            anchors.fill: parent
+            onClicked: modelList.clear();
+        }
+
+        Text {
+            id: text5
+            color: "#ffffff"
+            text: qsTr("Clear")
+            font.pixelSize: 12
+            styleColor: "#ffffff"
+            anchors.fill: parent
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
+        anchors.rightMargin: 14
+        anchors.topMargin: 7
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: rectangle4.left
+        anchors.bottomMargin: 8
     }
 }

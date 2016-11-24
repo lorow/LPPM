@@ -5,6 +5,7 @@ import QtQuick.Window 2.0
 import "utils"
 ApplicationWindow
 {
+    property int offset: 45
     id: windowMain
     visible: true
     width:  1100
@@ -35,7 +36,35 @@ ApplicationWindow
     {
         id: leftSide
         width: 61
-        z: 1
+        Rectangle {
+            id: add
+            width: 50
+            height: 30
+            color: "#0b0b0b"
+            anchors.right: parent.right
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.topMargin: 92
+            anchors.top: parent.top
+            MouseArea {
+                id: mouseArea5
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {parent.color = "#191919"}
+                onExited:{parent.color = "#0b0b0b"}
+            }
+
+            Image {
+                id: image6
+                anchors.bottomMargin: 5
+                anchors.leftMargin: 21
+                anchors.fill: parent
+                anchors.topMargin: 5
+                source: "utils/svgIcons/add.svg"
+                anchors.rightMargin: 21
+            }
+            anchors.rightMargin: 0
+        }
 
         Rectangle {
             id: save
@@ -46,15 +75,15 @@ ApplicationWindow
             anchors.rightMargin: 0
             anchors.left: parent.left
             anchors.leftMargin: 0
-            anchors.top: parent.top
-            anchors.topMargin: 107
+            anchors.top: add.bottom
+            anchors.topMargin: 12
 
             MouseArea {
                 id: mouseArea1
                 anchors.fill: parent
                 hoverEnabled: true
-                onEntered: {save.color = "#191919"}
-                onExited:{save.color = "#0b0b0b"}
+                onEntered: {parent.color = "#191919"}
+                onExited:{parent.color = "#0b0b0b"}
             }
 
             Image {
@@ -70,7 +99,6 @@ ApplicationWindow
 
         Rectangle {
             id: load
-            y: -3
             height: 30
             color: "#0b0b0b"
             anchors.right: parent.right
@@ -84,10 +112,9 @@ ApplicationWindow
                 id: mouseArea2
                 anchors.fill: parent
                 hoverEnabled: true
-                onEntered: {load.color = "#191919"}
-                onExited:{load.color = "#0b0b0b"}
+                onEntered: {parent.color = "#191919"}
+                onExited:{parent.color = "#0b0b0b"}
             }
-
             Image {
                 id: image3
                 anchors.rightMargin: 19
@@ -115,8 +142,8 @@ ApplicationWindow
                 id: mouseArea3
                 anchors.fill: parent
                 hoverEnabled: true
-                onEntered: {exportMy.color = "#191919"}
-                onExited:{exportMy.color = "#0b0b0b"}
+                onEntered: {parent.color = "#191919"}
+                onExited:{parent.color = "#0b0b0b"}
             }
 
             Image {
@@ -145,8 +172,8 @@ ApplicationWindow
                 id: mouseArea4
                 anchors.fill: parent
                 hoverEnabled: true
-                onEntered: {importMy.color = "#191919"}
-                onExited:{importMy.color = "#0b0b0b"}
+                onEntered: {parent.color = "#191919"}
+                onExited:{parent.color = "#0b0b0b"}
             }
 
             Image {
@@ -160,15 +187,17 @@ ApplicationWindow
             }
         }
 
+
     }
 
     UnderTop
     {
         id: underTop
+        z: 1
         anchors.leftMargin: 0
         anchors.left: leftSide.right
-        z: 1
         anchors.rightMargin: 220
+        modelList: mod
     }
 
     BottomSide
@@ -204,7 +233,7 @@ ApplicationWindow
             width: 15
             height: 22
             color: "#d3d0d0"
-            text: qsTr("0")
+            text: mod.count
 
             horizontalAlignment: Text.AlignHCenter
             anchors.bottom: parent.bottom
@@ -241,7 +270,7 @@ ApplicationWindow
             width: 15
             height: 22
             color: "#d3d0d0"
-            text: qsTr("0")
+            text: qsTr("0");
             anchors.leftMargin: 0
             horizontalAlignment: Text.AlignHCenter
             anchors.bottom: parent.bottom
@@ -448,6 +477,8 @@ ApplicationWindow
             onPressed:
             {
                 addButton.color = "#d35400"
+                var test = Qt.createComponent(ListView);
+                mod.append(test);
             }
             onReleased: addButton.color = "#e74c3c"
         }
@@ -455,169 +486,45 @@ ApplicationWindow
 
     GridView {
         id: gridView1
+        z: -1
+        layoutDirection: Qt.RightToLeft
         anchors.top: underTop.bottom
         anchors.right: rightSide.left
         anchors.bottom: bottomSide.top
         anchors.left: leftSide.right
-        cellHeight: 101
-        cellWidth: 101
+        cellHeight: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
+        cellWidth: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
 
         delegate:
             Item {
-            height: 110
+            id: test22
+            height: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
             Rectangle {
-                width: 100
-                height: 100
-                color: rightSide.pickerColor // "#191919" // here you must add color from picker
-                anchors.horizontalCenterOffset: 76
-                anchors.horizontalCenter: parent.horizontalCenter
+                width: underTop.sizeOfTheTile
+                height: underTop.sizeOfTheTile
+                color: rightSide.pickerColor
+                anchors.horizontalCenterOffset: windowMain.offset
+                anchors.horizontalCenter: parent.horizontalCenter // "#191919" // here you must add color from picker
                 Text {
-                    z: 3
                     text: index
+                    anchors.rightMargin: -23
+                    anchors.bottomMargin: -19
+                    anchors.leftMargin: 23
+                    anchors.topMargin: 19
+                    anchors.fill: parent
                     color:"white"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    anchors.fill: parent
                 }
             }
         }
-
-        model: ListModel {
-            id: mod
-            //they are scrolling properly, you don't have to test it again
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-            ListElement{}
-
-
-
-
-        }
+        model: ListModel
+        {
+        id: mod
+        ListElement{}
+        ListElement{}
+        ListElement{}
     }
-
-
+  }
 }
 
