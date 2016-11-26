@@ -36,6 +36,7 @@ ApplicationWindow
     {
         id: leftSide
         width: 61
+//to standalone component from:
         Rectangle {
             id: add
             width: 50
@@ -186,7 +187,7 @@ ApplicationWindow
                 source: "utils/svgIcons/file-import.png"
             }
         }
-
+//end
 
     }
 
@@ -208,7 +209,7 @@ ApplicationWindow
         anchors.right: rightSide.left
         anchors.left: leftSide.right
         z: 1
-
+//to standalone component from:
         Text {
             id: tilesCounter
             width: 82
@@ -282,7 +283,7 @@ ApplicationWindow
             anchors.left: tilesScanedCounter.right
         }
     }
-
+//end
     RightSide
     {
         id: rightSide
@@ -290,9 +291,9 @@ ApplicationWindow
         anchors.bottom: parent.bottom
         z: 1
         anchors.top: topbar.bottom
-
+//to standalone component from:
         Rectangle {
-            id: rectangle7
+            id: red
             height: 40
             color: "#191919"
             radius: 4
@@ -331,7 +332,7 @@ ApplicationWindow
         }
 
         Rectangle {
-            id: rectangle8
+            id: green
             height: 40
             color: "#191919"
             radius: 4
@@ -369,7 +370,7 @@ ApplicationWindow
         }
 
         Rectangle {
-            id: rectangle9
+            id: blue
             x: 7
             height: 40
             color: "#191919"
@@ -407,7 +408,7 @@ ApplicationWindow
         }
 
         Rectangle {
-            id: rectangle10
+            id: hex
             x: 15
             height: 40
             color: "#191919"
@@ -444,8 +445,9 @@ ApplicationWindow
             anchors.rightMargin: 10
         }
     }
+    //end
 
-    //just for debugging
+    //to standalone component
     Rectangle {
         id: addButton
         x: 970
@@ -483,7 +485,7 @@ ApplicationWindow
             onReleased: addButton.color = "#e74c3c"
         }
     }
-
+//to standalone component
     GridView {
         id: gridView1
         z: -1
@@ -527,4 +529,3 @@ ApplicationWindow
     }
   }
 }
-

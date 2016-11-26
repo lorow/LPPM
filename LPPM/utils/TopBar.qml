@@ -121,7 +121,7 @@ Rectangle
                     bestWidth = 50
                     bestRadius = 25
 
-                    window.offset = 30
+                    window.offset = 27
                     console.log(maximized)
                 }
                 else if (maximized == true)
@@ -134,7 +134,7 @@ Rectangle
                     bestHeight = 40
                     bestRadius = 20
 
-                    window.offset = 28
+                    window.offset = 45
                     console.log(maximized)
                 }
             }
