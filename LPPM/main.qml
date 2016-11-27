@@ -62,44 +62,13 @@ ApplicationWindow
         anchors.bottom: parent.bottom
         z: 1
         anchors.top: topbar.bottom
-        Rectangle
+        AddButton
         {
-            id: addButton
-            y: 533
-            height: 40
-            z: 3
-            radius: topbar.bestRadius
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 87
-            anchors.left: parent.left
-            anchors.leftMargin: 90
-            anchors.right: parent.right
+            y: 538
             anchors.rightMargin: 90
-            color: "#e74c3c"
-
-            Image
-            {
-                id: image1
-                anchors.rightMargin: 12
-                anchors.leftMargin: 12
-                anchors.bottomMargin: 12
-                anchors.topMargin: 12
-                fillMode: Image.Stretch
-                anchors.fill: parent
-                source: "utils/svgIcons/add.svg"
-            }
-            MouseArea
-            {
-                id: addTile
-                anchors.fill: parent
-                onPressed:
-                {
-                    addButton.color = "#d35400"
-                    var test = Qt.createComponent(ListView);
-                    mod.append(test);
-                }
-                onReleased: addButton.color = "#e74c3c"
-            }
+            anchors.bottomMargin: 82
+            anchors.leftMargin: 90
+            mod: mod
         }
     }
 
