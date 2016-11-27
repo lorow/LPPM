@@ -27,7 +27,7 @@ Item {
             anchors.leftMargin: 21
             anchors.fill: parent
             anchors.topMargin: 5
-            source: "utils/svgIcons/add.svg"
+            source: "svgIcons/add.svg"
             anchors.rightMargin: 21
         }
         anchors.rightMargin: 0
@@ -60,7 +60,7 @@ Item {
             anchors.rightMargin: 21
             anchors.leftMargin: 21
             anchors.fill: parent
-            source: "utils/svgIcons/content-save.png"
+            source: "svgIcons/content-save.png"
         }
     }
 
@@ -89,7 +89,7 @@ Item {
             anchors.bottomMargin: 3
             anchors.topMargin: 3
             anchors.fill: parent
-            source: "utils/svgIcons/folder-upload.png"
+            source: "svgIcons/folder-upload.png"
         }
     }
 
@@ -120,7 +120,7 @@ Item {
             anchors.bottomMargin: 3
             anchors.topMargin: 3
             anchors.fill: parent
-            source: "utils/svgIcons/file-export.png"
+            source: "svgIcons/file-export.png"
         }
     }
 
@@ -150,7 +150,7 @@ Item {
             anchors.bottomMargin: 3
             anchors.topMargin: 3
             anchors.fill: parent
-            source: "utils/svgIcons/file-import.png"
+            source: "svgIcons/file-import.png"
         }
     }
 }

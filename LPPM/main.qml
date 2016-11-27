@@ -18,284 +18,181 @@ ApplicationWindow
 
     flags: Qt.FramelessWindowHint | Qt.WindowMinimizeButtonHint | Qt.Window
 
-    ResizeWindow
-    {
-        id: resizeWindow1
-        anchors.fill: parent
-        window: windowMain
-        z:2
-    }
-    TopBar
-    {
-        id: topbar
-        z: 1
-        window: windowMain
-    }
-
-    LeftSide
-    {
-        id: leftSide
-        width: 61
-//to standalone component from:
-
-//end
-
-    }
-
-    UnderTop
-    {
-        id: underTop
-        z: 1
-        anchors.leftMargin: 0
-        anchors.left: leftSide.right
-        anchors.rightMargin: 220
-        modelList: mod
-    }
-
-    BottomSide
-    {
-        id: bottomSide
-        height: 30
-        anchors.leftMargin: 0
-        anchors.right: rightSide.left
-        anchors.left: leftSide.right
-        z: 1
-//to standalone component from:
-        Text {
-            id: tilesCounter
-            width: 82
-            height: 22
-            color: "#d3d0d0"
-            text: qsTr("Tiles in whole: ")
-            anchors.left: parent.left
-            anchors.leftMargin: 13
-            anchors.top: parent.top
-            anchors.topMargin: 4
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 12
-        }
-
-        Text {
-            id: countedTiles
-            x: -4
-            y: 6
-            width: 15
-            height: 22
-            color: "#d3d0d0"
-            text: mod.count
-
-            horizontalAlignment: Text.AlignHCenter
-            anchors.bottom: parent.bottom
-            font.pixelSize: 12
-            verticalAlignment: Text.AlignVCenter
-            anchors.bottomMargin: 4
-            anchors.top: parent.top
-            anchors.topMargin: 4
-            anchors.left: tilesCounter.right
-        }
-
-        Text {
-            id: tilesScanedCounter
-            x: 6
-            y: 6
-            width: 82
-            height: 22
-            color: "#d3d0d0"
-            text: qsTr("Scanned tiles:")
-            anchors.leftMargin: 20
-            horizontalAlignment: Text.AlignHCenter
-            anchors.bottom: parent.bottom
-            font.pixelSize: 12
-            verticalAlignment: Text.AlignVCenter
-            anchors.bottomMargin: 4
-            anchors.top: parent.top
-            anchors.topMargin: 4
-            anchors.left: countedTiles.right
-        }
-
-        Text {
-            id: scannedTiles
-            y: 12
-            width: 15
-            height: 22
-            color: "#d3d0d0"
-            text: qsTr("0");
-            anchors.leftMargin: 0
-            horizontalAlignment: Text.AlignHCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 12
-            anchors.top: parent.top
-            anchors.topMargin: 4
-            anchors.left: tilesScanedCounter.right
-        }
-    }
-//end
-    RightSide
-    {
-        id: rightSide
+    GridView {
+        id: gridView1
         x: 880
-        anchors.bottom: parent.bottom
-        z: 1
-        anchors.top: topbar.bottom
-//to standalone component from:
-        Rectangle {
-            id: red
-            height: 40
-            color: "#191919"
-            radius: 4
-            anchors.top: parent.top
-            anchors.topMargin: 202
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.rightMargin: 10
+        y: 40
+        z: -1
+        layoutDirection: Qt.RightToLeft
+        anchors.top: underTop.bottom
+        anchors.right: rightSide.left
+        anchors.bottom: bottomSide.top
+        anchors.left: leftSide.right
+        cellHeight: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
+        cellWidth: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
 
-            Text {
-                id: text6
-                color: "#ffffff"
-                text: qsTr("Red:")
-                anchors.rightMargin: 100
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                anchors.fill: parent
-                font.pixelSize: 12
-            }
-
-            TextInput {
-                id: textInput1
-                x: 100
-                y: 0
-                color: "#ffffff"
-                text: qsTr("255")
-                echoMode: TextInput.Normal
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                maximumLength: 3
-                anchors.leftMargin: 100
-                anchors.fill: parent
-                font.pixelSize: 12
+        delegate:
+            Item {
+            id: test22
+            height: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
+            Rectangle {
+                width: underTop.sizeOfTheTile
+                height: underTop.sizeOfTheTile
+                color: rightSide.pickerColor
+                anchors.horizontalCenterOffset: windowMain.offset
+                anchors.horizontalCenter: parent.horizontalCenter // "#191919" // here you must add color from picker
+                Text {
+                    text: index
+                    anchors.rightMargin: -23
+                    anchors.bottomMargin: -19
+                    anchors.leftMargin: 23
+                    anchors.topMargin: 19
+                    anchors.fill: parent
+                    color:"white"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
         }
-
-        Rectangle {
-            id: green
-            height: 40
-            color: "#191919"
-            radius: 4
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.top: red.bottom
-            anchors.topMargin: 20
-            anchors.left: parent.left
-            anchors.rightMargin: 10
-
-            Text {
-                id: text7
-                color: "#ffffff"
-                text: qsTr("Green:")
-                verticalAlignment: Text.AlignVCenter
-                anchors.fill: parent
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 12
-                anchors.rightMargin: 100
-            }
-
-            TextInput {
-                id: textInput2
-                x: -2
-                y: -9
-                color: "#ffffff"
-                text: qsTr("255")
-                anchors.leftMargin: 100
-                anchors.fill: parent
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                maximumLength: 3
-                font.pixelSize: 12
-            }
-        }
-
-        Rectangle {
-            id: blue
-            x: 7
-            height: 40
-            color: "#191919"
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            anchors.top: green.bottom
-            anchors.topMargin: 20
-            anchors.left: parent.left
-            anchors.rightMargin: 10
-
-            Text {
-                id: text8
-                color: "#ffffff"
-                text: qsTr("Blue:")
-                verticalAlignment: Text.AlignVCenter
-                anchors.fill: parent
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 12
-                anchors.rightMargin: 101
-            }
-
-            TextInput {
-                id: textInput3
-                x: -8
-                y: -8
-                color: "#ffffff"
-                text: qsTr("255")
-                anchors.leftMargin: 100
-                anchors.fill: parent
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                maximumLength: 3
-                font.pixelSize: 12
-            }
-        }
-
-        Rectangle {
-            id: hex
-            x: 15
-            height: 40
-            color: "#191919"
-            radius: 4
-            anchors.leftMargin: 10
-            Text {
-                id: text9
-                color: "#ffffff"
-                text: qsTr("HEX:")
-                verticalAlignment: Text.AlignVCenter
-                anchors.fill: parent
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: 12
-                anchors.rightMargin: 101
-            }
-
-            TextInput {
-                id: textInput4
-                x: 2
-                y: -2
-                color: "#ffffff"
-                text: qsTr("#ffffff")
-                anchors.leftMargin: 100
-                anchors.fill: parent
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                maximumLength: 7
-                font.pixelSize: 12
-            }
-            anchors.right: parent.right
-            anchors.top: blue.bottom
-            anchors.topMargin: 20
-            anchors.left: parent.left
-            anchors.rightMargin: 10
-        }
+        model: ListModel
+        {
+        id: mod
+        ListElement{}
+        ListElement{}
+        ListElement{}
     }
+}
+
+ResizeWindow
+{
+    id: resizeWindow1
+    anchors.fill: parent
+    window: windowMain
+    z:2
+}
+TopBar
+{
+    id: topbar
+    z: 1
+    window: windowMain
+}
+
+LeftSide
+{
+    id: leftSide
+    width: 61
+
+    LeftSideButtons {
+        id: leftSideButtons1
+        anchors.fill: parent
+    }
+    //to standalone component from:
+    //end
+
+}
+
+UnderTop
+{
+    id: underTop
+    z: 1
+    anchors.leftMargin: 0
+    anchors.left: leftSide.right
+    anchors.rightMargin: 220
+    modelList: mod
+}
+
+BottomSide
+{
+    id: bottomSide
+    height: 30
+    anchors.leftMargin: 0
+    anchors.right: rightSide.left
+    anchors.left: leftSide.right
+    z: 1
+    //to standalone component from:
+    Text {
+        id: tilesCounter
+        width: 82
+        height: 22
+        color: "#d3d0d0"
+        text: qsTr("Tiles in whole: ")
+        anchors.left: parent.left
+        anchors.leftMargin: 13
+        anchors.top: parent.top
+        anchors.topMargin: 4
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 12
+    }
+
+    Text {
+        id: countedTiles
+        x: -4
+        y: 6
+        width: 15
+        height: 22
+        color: "#d3d0d0"
+        text: mod.count
+
+        horizontalAlignment: Text.AlignHCenter
+        anchors.bottom: parent.bottom
+        font.pixelSize: 12
+        verticalAlignment: Text.AlignVCenter
+        anchors.bottomMargin: 4
+        anchors.top: parent.top
+        anchors.topMargin: 4
+        anchors.left: tilesCounter.right
+    }
+
+    Text {
+        id: tilesScanedCounter
+        x: 6
+        y: 6
+        width: 82
+        height: 22
+        color: "#d3d0d0"
+        text: qsTr("Scanned tiles:")
+        anchors.leftMargin: 20
+        horizontalAlignment: Text.AlignHCenter
+        anchors.bottom: parent.bottom
+        font.pixelSize: 12
+        verticalAlignment: Text.AlignVCenter
+        anchors.bottomMargin: 4
+        anchors.top: parent.top
+        anchors.topMargin: 4
+        anchors.left: countedTiles.right
+    }
+
+    Text {
+        id: scannedTiles
+        y: 12
+        width: 15
+        height: 22
+        color: "#d3d0d0"
+        text: qsTr("0");
+        anchors.leftMargin: 0
+        horizontalAlignment: Text.AlignHCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 12
+        anchors.top: parent.top
+        anchors.topMargin: 4
+        anchors.left: tilesScanedCounter.right
+    }
+}
+//end
+RightSide
+{
+    id: rightSide
+    x: 880
+    anchors.bottom: parent.bottom
+    z: 1
+    anchors.top: topbar.bottom
+    //to standalone component from:
+
     //end
 
     //to standalone component
@@ -336,47 +233,7 @@ ApplicationWindow
             onReleased: addButton.color = "#e74c3c"
         }
     }
-//to standalone component
-    GridView {
-        id: gridView1
-        z: -1
-        layoutDirection: Qt.RightToLeft
-        anchors.top: underTop.bottom
-        anchors.right: rightSide.left
-        anchors.bottom: bottomSide.top
-        anchors.left: leftSide.right
-        cellHeight: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
-        cellWidth: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
+    //to standalone component
+}
 
-        delegate:
-            Item {
-            id: test22
-            height: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
-            Rectangle {
-                width: underTop.sizeOfTheTile
-                height: underTop.sizeOfTheTile
-                color: rightSide.pickerColor
-                anchors.horizontalCenterOffset: windowMain.offset
-                anchors.horizontalCenter: parent.horizontalCenter // "#191919" // here you must add color from picker
-                Text {
-                    text: index
-                    anchors.rightMargin: -23
-                    anchors.bottomMargin: -19
-                    anchors.leftMargin: 23
-                    anchors.topMargin: 19
-                    anchors.fill: parent
-                    color:"white"
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                }
-            }
-        }
-        model: ListModel
-        {
-        id: mod
-        ListElement{}
-        ListElement{}
-        ListElement{}
-    }
-  }
 }
