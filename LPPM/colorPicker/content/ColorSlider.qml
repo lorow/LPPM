@@ -11,6 +11,8 @@ Item {
             width: parent.width + 4; height: 7
             border.color: "black"; border.width: 1
             color: "transparent"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             Rectangle {
                 anchors.fill: parent; anchors.margins: 2
                 border.color: "white"; border.width: 1

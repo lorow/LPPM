@@ -11,12 +11,18 @@
         <file>utils/Variables.qml</file>
         <file>utils/TopBar.qml</file>
         <file>utils/svgIcons/add.svg</file>
-        <file>utils/svgIcons/export.svg</file>
-        <file>utils/svgIcons/load.svg</file>
-        <file>utils/svgIcons/save.svg</file>
-        <file>utils/svgIcons/settings.svg</file>
         <file>utils/svgIcons/settings1.png</file>
         <file>utils/svgIcons/settings2.png</file>
         <file>utils/ResizeWindow.qml</file>
+        <file>utils/UnderTop.qml</file>
+        <file>utils/RightSide.qml</file>
+        <file>utils/BottomSide.qml</file>
+        <file>utils/LeftSide.qml</file>
+        <file>utils/svgIcons/content-save.png</file>
+        <file>utils/svgIcons/folder-upload.png</file>
+        <file>utils/svgIcons/file-export.png</file>
+        <file>utils/svgIcons/file-import.png</file>
+        <file>utils/LeftSideButtons.qml</file>
+        <file>utils/AddButton.qml</file>
     </qresource>
 </RCC>

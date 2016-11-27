@@ -7,7 +7,6 @@ Item {
     property real saturation : pickerCursor.x/width
     property real brightness : 1 - pickerCursor.y/height
     width: 200; height: 200
-    clip: true
     Rectangle {
         anchors.fill: parent;
         rotation: -90
@@ -28,9 +27,9 @@ Item {
         property int r : 8
         Rectangle {
             x: -parent.r; y: -parent.r
-            width: parent.r*2; height: parent.r*2
-            radius: parent.r
-            border.color: "black"; border.width: 2
+            width: 14
+            height: 14
+            border.color: "black"; border.width: 0
             color: "transparent"
             Rectangle {
                 anchors.fill: parent; anchors.margins: 2;
