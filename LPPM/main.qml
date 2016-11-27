@@ -338,7 +338,7 @@ ApplicationWindow
             radius: 4
             anchors.leftMargin: 10
             anchors.right: parent.right
-            anchors.top: rectangle7.bottom
+            anchors.top: red.bottom
             anchors.topMargin: 20
             anchors.left: parent.left
             anchors.rightMargin: 10
@@ -376,7 +376,7 @@ ApplicationWindow
             color: "#191919"
             anchors.leftMargin: 10
             anchors.right: parent.right
-            anchors.top: rectangle8.bottom
+            anchors.top: green.bottom
             anchors.topMargin: 20
             anchors.left: parent.left
             anchors.rightMargin: 10
@@ -439,7 +439,7 @@ ApplicationWindow
                 font.pixelSize: 12
             }
             anchors.right: parent.right
-            anchors.top: rectangle9.bottom
+            anchors.top: blue.bottom
             anchors.topMargin: 20
             anchors.left: parent.left
             anchors.rightMargin: 10
