@@ -22,5 +22,6 @@
         <file>utils/svgIcons/folder-upload.png</file>
         <file>utils/svgIcons/file-export.png</file>
         <file>utils/svgIcons/file-import.png</file>
+        <file>utils/LeftSideButtons.qml</file>
     </qresource>
 </RCC>
