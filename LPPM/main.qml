@@ -3,6 +3,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Window 2.0
 
 import "utils"
+import "utils/settingsWindow"
 ApplicationWindow
 {
     property int offset: 45
@@ -30,10 +31,13 @@ ApplicationWindow
         id: topbar
         z: 1
         window: windowMain
+        settingsWindow: settingsWindow1
+        wasClosedManually: settingsWindow1.changedZIndex
     }
     UnderTop
     {
         id: underTop
+        anchors.right: rightSide.left
         anchors.top: topbar.bottom
         anchors.topMargin: 0
         z: 1
@@ -83,50 +87,57 @@ ApplicationWindow
         mod: mod
     }
 
-    GridView {
-        id: gridView1
-        x: 880
-        y: 40
-        z: -1
-
-        layoutDirection: Qt.RightToLeft
+    Rectangle {
+        id: gridrect
+        color: "#222222"
+        anchors.rightMargin: 0
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 0
+        anchors.topMargin: 0
         anchors.top: underTop.bottom
         anchors.right: rightSide.left
         anchors.bottom: bottomSide.top
         anchors.left: leftSide.right
 
-        cellHeight: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
-        cellWidth: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
-
-        delegate:
-            Item {
-            id: test22
-            height: underTop.sizeOfTheTile + underTop.spaceBetweenTiles
-            Rectangle {
-                width: underTop.sizeOfTheTile
+        GridView {
+            id: gridView1
+            layoutDirection: Qt.RightToLeft
+            anchors.fill: parent
+            cellHeight: underTop.sizeOfTheTile + 1
+            cellWidth: underTop.sizeOfTheTile + 1
+            delegate:
+                Item {
+                id: test22
                 height: underTop.sizeOfTheTile
-                color: rightSide.pickerColor
-                anchors.horizontalCenterOffset: windowMain.offset
-                anchors.horizontalCenter: parent.horizontalCenter // "#191919" // here you must add color from picker
-                Text {
-                    text: index
-                    anchors.rightMargin: -23
-                    anchors.bottomMargin: -19
-                    anchors.leftMargin: 23
-                    anchors.topMargin: 19
-                    anchors.fill: parent
-                    color:"white"
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
+                Rectangle {
+                    id: rect
+                    width: underTop.sizeOfTheTile
+                    height: underTop.sizeOfTheTile
+                    color: rightSide.pickerColor
+                    MouseArea
+                    {
+                        anchors.fill: parent
+                        onClicked: console.log(rect.x, rect.y)
+                    }
+
+                    Text {
+                        text: index
+                        anchors.fill: parent
+                        color:"white"
+                        verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                    }
                 }
             }
+            model: ListModel
+            {
+            id: mod
+            ListElement{}
         }
-        model: ListModel
-        {
-        id: mod
-        ListElement{}
-        ListElement{}
-        ListElement{}
-         }
+    }
+  }
+    SettingsWindow
+    {
+        id: settingsWindow1
     }
 }

@@ -24,5 +24,6 @@
         <file>utils/svgIcons/file-import.png</file>
         <file>utils/LeftSideButtons.qml</file>
         <file>utils/AddButton.qml</file>
+        <file>utils/settingsWindow/SettingsWindow.qml</file>
     </qresource>
 </RCC>

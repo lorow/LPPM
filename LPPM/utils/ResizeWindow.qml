@@ -44,8 +44,9 @@ Item {
                 //now new position of the window
                 var newY = startWindowPos.y - (newHeight - startWindowSize.height)
                 //and here we will apply it
-                window.y = newY
+
                 window.height = newHeight
+                window.y = newY
             }
         }
     }
@@ -105,8 +106,9 @@ Item {
                 var abs = absoluteMousePos(leftArea)
                 var newWidth = Math.max(window.minimumWidth, startWindowSize.width - (abs.x - startMousePos.x))
                 var newX = startWindowPos.x - (newWidth - startWindowSize.width)
-                window.x = newX
+
                 window.width = newWidth
+                window.x = newX
             }
         }
     }
