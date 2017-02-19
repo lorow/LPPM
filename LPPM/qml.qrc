@@ -25,5 +25,7 @@
         <file>utils/LeftSideButtons.qml</file>
         <file>utils/AddButton.qml</file>
         <file>utils/settingsWindow/SettingsWindow.qml</file>
+        <file>utils/TopBarLite.qml</file>
+        <file>utils/svgIcons/down-arrow.svg</file>
     </qresource>
 </RCC>
